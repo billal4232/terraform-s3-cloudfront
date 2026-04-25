@@ -50,6 +50,18 @@ resource "aws_cloudfront_distribution" "main" {
       }
     }
   }
+  # redirect 404,403 error to error.html
+  custom_error_response {
+  error_code         = 404
+  response_code      = 404
+  response_page_path = "/error.html"
+}
+
+ custom_error_response {
+  error_code         = 403
+  response_code      = 403
+  response_page_path = "/error.html"
+}
 
   # WHO can access — no country restrictions
   restrictions {
